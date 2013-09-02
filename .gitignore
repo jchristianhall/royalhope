@@ -8,3 +8,6 @@
 # Workspace files
 dbms.sublime-workspace
 dbms.sublime-project
+
+# Sass
+.sass-cache/

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Royal Hope Hospital Database</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style/css/style.css" rel="stylesheet" media="screen">
+
+  </head>
+  <body>
+
+    <!-- Header -->
+    <header>
+      <div id="headerContainer">
+        <img src="img/logo.png" title="logo" width="50" height="50">
+        <h1>Royal Hope Hospital</h1>
+        <ul id="nav">
+          <li class="add">
+            <a title="Add" data-icon="&#xe000;"></a>
+          </li>
+          <li class="list">
+            <a title="List" data-icon="&#xe001;"></a>
+          </li>
+          <li class ="search">
+            <a title="Search" data-icon="&#xe002;"></a>
+          </li>
+        </ul><!-- // ul#nav -->
+      </div><!-- // #headerContainer -->
+    </header><!-- // header -->
+
+    <div class="container">
+
+      <!-- Opening buttons -->
+      <div id="opening">
+
+        <!-- Add button -->
+        <div class="openingButton add">
+          <div class="openingImage" data-icon="&#xe000;"></div>
+          <div class="openingText">Add</div>
+        </div><!-- // .openingButton -->
+
+        <!-- List button -->
+        <div class="openingButton list">
+          <div class="openingImage" data-icon="&#xe001;"></div>
+          <div class="openingText">List</div>
+        </div><!-- // .openingButton -->
+
+        <!-- Search button -->
+        <div class="openingButton search">
+          <div class="openingImage" data-icon="&#xe002;"></div>
+          <div class="openingText">Search</div>
+        </div><!-- // .openingButton -->
+
+      </div><!-- // #opening -->
+
+      <!-- Add, List, Search views -->
+
+      <!-- Add view -->
+      <div id="addView">
+        <h2>Add</h2>
+
+        <!-- Type toggle -->
+        <div id="addToggle">
+          <p>Select type to add</p>
+          <div class="btn-group" data-toggle="buttons-radio">
+            <button type="button" class="btn btn-inverse" id="doctorToggle">Doctor</button>
+            <button type="button" class="btn btn-inverse" id="patientToggle">Patient</button>
+          </div><!-- // .btn-group -->
+        </div><!-- // #addToggle -->
+
+        <!-- Doctor form -->
+        <form class="form-horizontal" id="doctorForm" action="php/addDoctor.php" method="post">
+          <div class="control-group">
+            <label class="control-label" for="doctorFirst">First Name</label>
+            <div class="controls">
+              <input type="text" name="doctorFirst" id="doctorFirst" placeholder="First Name">
+            </div><!-- // .controls -->
+          </div><!-- // .control-group -->
+          <div class="control-group">
+            <label class="control-label" for="doctorLast">Last Name</label>
+            <div class="controls">
+              <input type="text" name="doctorLast" id="doctorLast" placeholder="Last Name">
+            </div><!-- // .controls -->
+          </div><!-- // .control-group -->
+          <div class="control-group">
+            <label class="control-label" for="doctorssn">Social Security Number</label>
+            <div class="controls">
+              <input type="text" name="doctorssn" id="doctorssn" placeholder="xxxxxxxxx" maxlength="9">
+            </div><!-- // .controls -->
+          </div><!-- // .control-group -->
+          <div class="control-group">
+            <label class="control-label" for="doctorAddress">Address</label>
+            <div class="controls">
+              <input type="text" name="doctorAddress" id="doctorAddress" placeholder="Street, City, State, Zip">
+            </div><!-- // .controls -->
+          </div><!-- // .control-group -->
+          <div class="control-group">
+            <label class="control-label" for="doctorPhone">Phone Number</label>
+            <div class="controls">
+              <input type="text" name="doctorPhone" id="doctorPhone" placeholder="123-456-7890" maxlength="12">
+            </div><!-- // .controls -->
+          </div><!-- // .control-group -->
+          <div class="control-group">
+            <label class="control-label" for="doctorGender">Gender</label>
+            <div class="controls">
+              <label class="radio inline">
+                <input type="radio" name="doctorGender" id="doctorGenderMale" value="Male" checked>Male
+              </label>
+              <label class="radio inline">
+                <input type="radio" name="doctorGender" id="doctorGenderFemale" value="Female">Female
+              </label>
+            </div><!-- // .controls -->
+          </div><!-- // .control-group -->
+          <div class="control-group">
+            <label class="control-label" for="doctorBirth">Birthdate</label>
+            <div class="controls">
+              <input type="text" name="doctorBirth" id="doctorBirth" placeholder="MM/DD/YYYY" maxlength="10">
+            </div><!-- // .controls -->
+          </div><!-- // .control-group -->
+          <div class="control-group">
+            <label class="control-label" for="doctorSalary">Salary</label>
+            <div class="controls">
+              <input type="text" name="doctorSalary" id="doctorSalary" placeholder="100000" maxlength="7">
+            </div><!-- // .controls -->
+          </div><!-- // .control-group -->
+          <div class="control-group">
+            <label class="control-label" for="doctorSpecialty">Specialty</label>
+            <div class="controls">
+              <select name="doctorSpecialty" id="doctorSpecialty">
+                <option>General Practitioner</option>
+                <option>Anesthesiologist</option>
+                <option>Cardiologist</option>
+                <option>Dentist</option>
+                <option>General Surgeon</option>
+                <option>Immunologist</option>
+                <option>Neurologist</option>
+                <option>Neurosurgeon</option>
+                <option>Oncologist</option>
+                <option>Pediatrician</option>
+                <option>Radiologist</option>
+                <option>Toxicologist</option>
+              </select>
+            </div><!-- // .controls -->
+          </div><!-- // .control-group -->
+          <div class="form-actions">
+            <button type="submit" class="btn btn-inverse">Submit</button>
+            <button type="reset" class="btn">Clear</button>
+          </div><!-- // .form-actions -->
+        </form><!-- // .form-horizontal -->
+
+        <!-- Patient form -->
+        <form class="form-horizontal" id="patientForm" action="php/addPatient.php" method="post">
+          <div class="control-group">
+            <label class="control-label" for="patientFirst">First Name</label>
+            <div class="controls">
+              <input type="text" name="patientFirst" id="patientFirst" placeholder="First Name">
+            </div><!-- // .controls -->
+          </div><!-- // .control-group -->
+          <div class="control-group">
+            <label class="control-label" for="patientLast">Last Name</label>
+            <div class="controls">
+              <input type="text" name="patientLast" id="patientLast" placeholder="Last Name">
+            </div><!-- // .controls -->
+          </div><!-- // .control-group -->
+          <div class="control-group">
+            <label class="control-label" for="patientssn">Social Security Number</label>
+            <div class="controls">
+              <input type="text" name="patientssn" id="patientssn" placeholder="xxxxxxxxx" maxlength="9">
+            </div><!-- // .controls -->
+          </div><!-- // .control-group -->
+          <div class="control-group">
+            <label class="control-label" for="patientAddress">Address</label>
+            <div class="controls">
+              <input type="text" name="patientAddress" id="patientAddress" placeholder="Street, City, State, Zip">
+            </div><!-- // .controls -->
+          </div><!-- // .control-group -->
+          <div class="control-group">
+            <label class="control-label" for="patientPhone">Phone Number</label>
+            <div class="controls">
+              <input type="text" name="patientPhone" id="patientPhone" placeholder="123-456-7890" maxlength="12">
+            </div><!-- // .controls -->
+          </div><!-- // .control-group -->
+          <div class="control-group">
+            <label class="control-label" for="patientGender">Gender</label>
+            <div class="controls">
+              <label class="radio inline">
+                <input type="radio" name="patientGender" id="patientGenderMale" value="Male" checked>Male
+              </label>
+              <label class="radio inline">
+                <input type="radio" name="patientGender" id="patientGenderFemale" value="Female">Female
+              </label>
+            </div><!-- // .controls -->
+          </div><!-- // .control-group -->
+          <div class="control-group">
+            <label class="control-label" for="patientBirth">Birthdate</label>
+            <div class="controls">
+              <input type="text" name="patientBirth" id="patientBirth" placeholder="MM/DD/YYYY" maxlength="10">
+            </div><!-- // .controls -->
+          </div><!-- // .control-group -->
+          <div class="control-group">
+            <label class="control-label" for="patientBill">Bill</label>
+            <div class="controls">
+              <input type="text" name="patientBill" id="patientBill" placeholder="100000" maxlength="7">
+            </div><!-- // .controls -->
+          </div><!-- // .control-group -->
+          <div class="control-group">
+            <label class="control-label" for="patientIllness">Illness</label>
+            <div class="controls">
+              <input type="text" name="patientIllness" id="patientIllness" placeholder="Illness">
+            </div><!-- // .controls -->
+          </div><!-- // .control-group -->
+          <div class="control-group">
+            <label class="control-label" for="patientAdmit">Admittance Date</label>
+            <div class="controls">
+              <input type="text" name="patientAdmit" id="patientAdmit" placeholder="MM/DD/YYYY" maxlength="10">
+            </div><!-- // .controls -->
+          </div><!-- // .control-group -->
+          <div class="control-group">
+            <label class="control-label" for="patientDoctor">Doctor Assignment</label>
+            <div class="controls">
+              <input type="text" name="patientDoctor" id="patientDoctor" placeholder="Doctor ID">
+            </div><!-- // .controls -->
+          </div><!-- // .control-group -->
+          <div class="form-actions">
+            <button type="submit" class="btn btn-inverse">Submit</button>
+            <button type="reset" class="btn">Clear</button>
+          </div><!-- // .form-actions -->
+        </form><!-- // .form-horizontal -->
+
+      </div><!-- // #addView -->
+
+      <!-- List view -->
+      <div id="listView">
+        <h2>List</h2>
+
+        <!-- List type select -->
+        <select id="listSelect">
+          <option>Select list type</option>
+          <option>All Doctors</option>
+          <option>Diagnosed Patients</option>
+          <option>Undiagnosed Patients</option>
+          <option>Released Patients</option>
+        </select><!-- // #listSelect -->
+
+        <!-- List results -->
+        <div id="listResults">
+          <!-- Results from listDoctors.php prepended here -->
+        </div><!-- #listResults -->
+
+      </div><!-- // #listView -->
+
+      <!-- Search view -->
+      <div id="searchView">
+        <h2>Search</h2>
+
+        <form class="form-search" id="searchForm">
+          <div class="input-append">
+            <input type="text" name="searchBar" class="span2" id="searchBar" autocomplete="off" placeholder="Search specialties or illnesses">
+            <div class="btn-group">
+              <button class="btn dropdown-toggle" id="searchDropdown" data-toggle="dropdown" data-s-text="Specialty" data-i-text="Illness">
+                Type
+                <span class="caret"></span>
+              </button><!-- // .dropdown-toggle -->
+              <ul class="dropdown-menu">
+                <li id="searchSpecialty"><a>Specialty</a></li>
+                <li id="searchIllness"><a>Illness</a></li>
+              </ul><!-- // .dropdown-menu -->
+            </div><!-- // .btn-group -->
+            <button type="submit" class="btn" id="searchButton">Search</button>
+          </div><!-- // .input-append -->
+        </form><!-- // .form-search -->
+
+        <!-- Search results -->
+        <div id="searchResults">
+          <!-- Results from searchSpecialty.php or searchIllness.php prepended here -->
+        </div><!-- #searchResults -->
+
+      </div><!-- // #searchView -->
+
+      <!-- Profile view -->
+      <div id="profileView">
+        <!-- Results from profileDoctor.php or profilePatient.php loaded here -->
+      </div><!-- // #profileView -->
+
+      <!-- Edit view -->
+      <div id="editView">
+        <!-- Results from editDoctor.php or editPatient.php loaded here -->
+      </div><!-- // #editView -->
+
+    </div><!-- // .container -->
+
+    <!-- Scripts -->
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="script/min/script-min.js"></script>
+  </body>
+</html>

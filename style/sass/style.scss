@@ -1,0 +1,414 @@
+@import "reset.scss";
+@import "bootstrap.scss";
+@import "compass/css3/transition";
+@import url(http://fonts.googleapis.com/css?family=Merriweather+Sans:700|Open+Sans:300,700);
+
+/** Fonts */
+@font-face {
+  font-weight: normal;
+  font-style: normal;
+  font-family: 'icons';
+  src:url('../../fonts/icons.eot');
+  src:url('../../fonts/icons.eot?#iefix') format('embedded-opentype'),
+    url('../../fonts/icons.woff') format('woff'),
+    url('../../fonts/icons.ttf') format('truetype'),
+    url('../../fonts/icons.svg#icons') format('svg');
+}
+[data-icon] {
+  display: inline-block;
+}
+[data-icon]:before {
+  content: attr(data-icon);
+  text-transform: none;
+  font-weight: normal;
+  font-variant: normal;
+  font-family: 'icons';
+  line-height: 1;
+  speak: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+/** Foundation */
+$main: #1B2157;
+$hover: #272D70;
+$grey: #e5e5e5;
+$dark: #3f3f3f;
+$light: #fff;
+$med: #353535;
+$footer: #f5f5f5;
+
+$border: 1px solid $grey;
+
+body {
+  background: url('../../img/background.png');
+  color: $dark;
+  font-family: 'Open Sans', sans-serif;
+}
+.container {
+  position: relative;
+  margin: auto;
+  width: 960px;
+  height: 100%;
+}
+h2 {
+  padding: 20px;
+  border-bottom: $border;
+  letter-spacing: 0.3em;
+  font-family: 'Merriweather Sans', sans-serif;
+}
+.btn {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+}
+.alert {
+  padding: 20px 0;
+  .close {
+    right: 20px;
+  }
+  strong {
+    padding: 20px;
+    font-weight: 700;
+  }
+}
+.clear {
+  &:before,
+  &:after {
+    display: table;
+    content: "";
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+/** Header */
+header {
+  width: 100%;
+  height: 75px;
+  background: $main;
+  color: $light;
+  #headerContainer {
+    margin: 0 auto;
+    width: 960px;
+    img {
+      float: left;
+      margin: 12.5px 0;
+      width: 50px;
+      height: 50px;
+    }
+    h1 {
+      float: left;
+      margin: 0 0 0 10px;
+      letter-spacing: 0.1em;
+      font-size: 1.3em;
+      font-family: 'Merriweather Sans', sans-serif;
+      line-height: 75px;
+    }
+    #nav {
+      float: right;
+      margin: 0;
+      li{
+        float: left;
+        width: 75px;
+        height: 75px;
+        a{
+          @include single-transition(background, 0.25s, ease-in);
+          width: 75px;
+          height: 75px;
+          color: $light;
+          text-align: center;
+          text-decoration: none;
+          font-size: 1.1em;
+          line-height: 75px;
+          cursor: pointer;
+          &:hover {
+            @include single-transition(background, 0.25s, ease-in);
+            background: $hover;
+          }
+        }
+      }
+    }
+  }
+}
+
+/** Opening buttons */
+#opening {
+  .openingButton {
+    @include single-transition(all, 0.25s, ease-in);
+    float: left;
+    margin: 20px 20px 0 0;
+    width: 300px;
+    height: 300px;
+    border: $border;
+    background: $light;
+    color: $grey;
+    text-align: center;
+    &:last-child {
+      margin-right: 0;
+    }
+    &:hover {
+      @include single-transition(all, 0.25s, ease-in);
+      border-color: $dark;
+      color: $dark;
+      cursor: pointer;
+    }
+    .openingImage {
+      margin: 90px auto 0 auto;
+      font-size: 3em;
+    }
+    .openingText {
+      margin-top: 50px;
+      letter-spacing: 0.3em;
+      font-size: 1.2em;
+    }
+  }
+}
+
+/** Add, List, Search views */
+
+// Add
+#addView {
+  display: none;
+  min-height: 647px;
+  height: 100%;
+  border: $border;
+  background: $light;
+  #addToggle {
+    float: left;
+    margin: 20px 0;
+    width: 100%;
+    p {
+      display: block;
+      float: left;
+      padding-top: 5px;
+      width: 400px;
+      text-align: right;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    .btn-group {
+      display: block;
+      margin-left: 420px;
+      #doctorToggle,
+      #patientToggle {
+        border-radius: 0;
+      }
+    }
+  }
+  #doctorForm,
+  #patientForm {
+    display: none;
+  }
+  .form-horizontal {
+    margin-bottom: 0;
+    .control-label {
+      width: 400px;
+    }
+    input {
+      -webkit-border-radius: 0;
+      -moz-border-radius: 0;
+      border-radius: 0;
+    }
+    .controls {
+      margin-left: 420px;
+    }
+    #salary {
+      width: 146px;
+    }
+  }
+  .form-actions {
+    margin-bottom: 0;
+    padding-left: 420px;
+  }
+}
+
+// List
+#listView {
+  display: none;
+  height: 100%;
+  border: $border;
+  background: $light;
+  #listSelect {
+    margin: 20px 0 20px 330px;
+    width: 300px;
+  }
+  .listItem {
+    @include single-transition(background-color, 0.25s, ease-in);
+    height: 60px;
+    border-top: $border;
+    background-color: $light;
+    &:hover {
+      @include single-transition(background-color, 0.25s, ease-in);
+      background-color: $grey;
+      cursor: pointer;
+    }
+    .listID {
+      float: left;
+      padding: 0 20px;
+      width: 30px;
+      border-right: $border;
+      text-align: center;
+      line-height: 60px;
+    }
+    .listName {
+      display: inline-block;
+      float: left;
+      padding: 0 20px;
+      width: 225px;
+      font-weight: 700;
+      line-height: 60px;
+    }
+    .listSpecialty {
+      float: left;
+      color: $med;
+      font-size: 0.8em;
+      line-height: 60px;
+    }
+  }
+}
+
+// Search
+#searchView {
+  display: none;
+  height: 100%;
+  border: $border;
+  background: $light;
+  #searchForm {
+    margin-bottom: 0;
+    #searchBar {
+      margin: 20px 0 20px 254px;
+      width: 300px;
+      border-radius: 0;
+    }
+    #searchDropdown{
+      width: 80px;
+    }
+    .btn {
+      -webkit-border-radius: 0;
+      -moz-border-radius: 0;
+      border-radius: 0;
+    }
+    .dropdown-menu {
+      a {
+        cursor: pointer;
+      }
+    }
+    #searchButton {
+      margin-top: 20px;
+    }
+  }
+  .searchItem {
+    @include single-transition(background-color, 0.25s, ease-in);
+    height: 60px;
+    border-top: $border;
+    background-color: $light;
+    &:hover {
+      @include single-transition(background-color, 0.25s, ease-in);
+      background-color: $grey;
+      cursor: pointer;
+    }
+    .searchID {
+      float: left;
+      padding: 0 20px;
+      width: 30px;
+      border-right: $border;
+      text-align: center;
+      line-height: 60px;
+    }
+    .searchName {
+      display: inline-block;
+      float: left;
+      padding: 0 20px;
+      width: 225px;
+      font-weight: 700;
+      line-height: 60px;
+    }
+    .searchInfo {
+      float: left;
+      color: $med;
+      font-size: 0.8em;
+      line-height: 60px;
+      span {
+        padding-right: 5px;
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+
+/** Profile view */
+#profileView {
+  display: none;
+  border: $border;
+  background: $light;
+  .profileBlock {
+    border-bottom: $border;
+    .profileBlockTitle {
+      display: block;
+      float: left;
+      padding: 20px;
+      width: 140px;
+      text-align: right;
+      span {
+        padding-bottom: 3px;
+        border-bottom: 1px solid $dark;
+      }
+    }
+    .profileBlockContent {
+      display: block;
+      margin-left: 200px;
+      padding: 20px;
+      min-height: 35px;
+      width: 720px;
+      .profileItem {
+        .profileLabel {
+          float: left;
+          padding: 5px 20px 0 5px;
+          width: 225px;
+          text-align: right;
+        }
+        .profileResult {
+          padding: 5px 0;
+        }
+      }
+    }
+  }
+  .profileEdit {
+    padding: 20px;
+    background-color: $footer;
+    .profileEditDoctorButton,
+    .profileEditPatientButton {
+      margin-left: 415px;
+    }
+  }
+}
+/** Edit view */
+#editView {
+  display: none;
+  height: 100%;
+  border: $border;
+  background: $light;
+  .form-horizontal {
+    margin: 20px 0 0 0;
+    .control-label {
+      width: 400px;
+    }
+    input {
+      -webkit-border-radius: 0;
+      -moz-border-radius: 0;
+      border-radius: 0;
+    }
+    .controls {
+      margin-left: 420px;
+    }
+    #salary {
+      width: 146px;
+    }
+  }
+  .form-actions {
+    margin-bottom: 0;
+    padding-left: 420px;
+  }
+}
